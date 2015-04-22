@@ -1,7 +1,6 @@
 package com.sydneyfocus;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -10,7 +9,7 @@ import java.util.Date;
  * Date: 17/04/15
  */
 @Entity(name = "News")
-public class News {
+public class News extends Guid{
 
     private String title;
     private String content;
@@ -32,7 +31,8 @@ public class News {
         this.status = status;
     }
 
-    @Column(name = "LastUpdateUser")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "LastUpdateUserId")
     public User getLastUpdateUser() {
         return lastUpdateUser;
     }
@@ -59,7 +59,8 @@ public class News {
         this.createdDate = createdDate;
     }
 
-    @Column(name = "Author")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "AuthorId")
     public User getAuthor() {
         return author;
     }

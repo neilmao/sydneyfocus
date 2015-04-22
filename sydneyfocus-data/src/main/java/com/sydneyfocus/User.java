@@ -10,7 +10,7 @@ import java.util.Date;
  * Date: 17/04/15
  */
 @Entity(name = "User")
-public class User {
+public class User extends Guid{
 
     private String firstName;
     private String lastName;
