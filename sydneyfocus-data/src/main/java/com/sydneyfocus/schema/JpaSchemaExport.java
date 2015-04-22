@@ -13,6 +13,7 @@ import java.util.Properties;
  */
 public class JpaSchemaExport {
 
+    private static final String sqlCreateFile = "schema-create.sql";
     public static void main(String[] args) throws IOException {
         execute(args[0], args[1]);
         System.exit(0);
@@ -29,13 +30,15 @@ public class JpaSchemaExport {
 
         //  force persistence properties : remove database target
         properties.setProperty(org.hibernate.cfg.AvailableSettings.HBM2DDL_AUTO, "");
-        properties.setProperty(org.hibernate.jpa.AvailableSettings.SCHEMA_GEN_DATABASE_ACTION, "none");
+        properties.setProperty(org.hibernate.jpa.AvailableSettings.SCHEMA_GEN_DATABASE_ACTION, "create");
 
         // force persistence properties : define create script target from metadata to destination
-//        properties.setProperty(org.hibernate.jpa.AvailableSettings.SCHEMA_GEN_CREATE_SCHEMAS, "true");
+        properties.setProperty(org.hibernate.jpa.AvailableSettings.SCHEMA_GEN_CREATE_SCHEMAS, "true");
         properties.setProperty(org.hibernate.jpa.AvailableSettings.SCHEMA_GEN_SCRIPTS_ACTION, "create");
         properties.setProperty(org.hibernate.jpa.AvailableSettings.SCHEMA_GEN_CREATE_SOURCE, "metadata");
-        properties.setProperty(org.hibernate.jpa.AvailableSettings.SCHEMA_GEN_SCRIPTS_CREATE_TARGET, destination);
+
+        properties.setProperty(org.hibernate.jpa.AvailableSettings.SCHEMA_GEN_SCRIPTS_CREATE_TARGET,
+                               destination + sqlCreateFile);
 
         Persistence.generateSchema(persistenceUnitName, properties);
     }

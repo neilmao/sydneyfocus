@@ -46,7 +46,7 @@
                                 <!-- ANT Task definition -->
                                 <java classname="com.sydneyfocus.schema.JpaSchemaExport" fork="true" failonerror="true">
                                     <arg value="sydneyfocus-repository" />
-                                    <arg value="src/main/resources/jpa/sql/schema-create.sql" />
+                                    <arg value="src/main/resources/jpa/sql/" />
                                     <!-- reference to the passed-in classpath reference -->
                                     <classpath refid="maven.compile.classpath" />
                                 </java>
