@@ -20,8 +20,23 @@ public class News extends Guid {
     private Date updatedDate;
     private User lastUpdateUser;
     private NewsStatus status;
+    private int visits;
+    private NewsCategory category;
 
     public News() {
+       init();
+    }
+
+    private void init() {
+        this.category = NewsCategory.Current;
+        this.visits = 0;
+        this.createdDate = new Date();
+        this.updatedDate = this.createdDate;
+        this.status = NewsStatus.NotActive;
+    }
+
+    public void delete() {
+        this.status = NewsStatus.Deleted;
     }
 
     @Column(name = "Status")
@@ -87,5 +102,23 @@ public class News extends Guid {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Column(name = "Visits")
+    public int getVisits() {
+        return visits;
+    }
+
+    public void setVisits(int visits) {
+        this.visits = visits;
+    }
+
+    @Column(name = "Category")
+    public NewsCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(NewsCategory category) {
+        this.category = category;
     }
 }
