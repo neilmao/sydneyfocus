@@ -13,6 +13,7 @@
         <module>sydneyfocus-repository</module>
         <module>sydneyfocus-service</module>
         <module>sydneyfocus-tools</module>
+        <module>sydads</module>
     </modules>
 
     <properties>

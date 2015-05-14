@@ -1,4 +1,6 @@
-package com.sydneyfocus;
+package com.sydneyfocus.news;
+
+import com.sydneyfocus.Guid;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,7 +11,7 @@ import java.util.Date;
  * Date: 17/04/15
  */
 @Entity(name = "News")
-public class News extends Guid{
+public class News extends Guid {
 
     private String title;
     private String content;

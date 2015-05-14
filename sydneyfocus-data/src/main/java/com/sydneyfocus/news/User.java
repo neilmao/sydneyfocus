@@ -1,4 +1,6 @@
-package com.sydneyfocus;
+package com.sydneyfocus.news;
+
+import com.sydneyfocus.Guid;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +12,7 @@ import java.util.Date;
  * Date: 17/04/15
  */
 @Entity(name = "UserAccount")
-public class User extends Guid{
+public class User extends Guid {
 
     private String firstName;
     private String lastName;
